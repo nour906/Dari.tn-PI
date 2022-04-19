@@ -20,6 +20,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Subscription implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id_su; 

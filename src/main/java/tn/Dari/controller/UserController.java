@@ -2,6 +2,8 @@ package tn.Dari.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.Dari.entities.User;
 import tn.Dari.services.IUserService;
+import tn.Dari.validation.EmailExistsException;
+
 
 
 
@@ -31,15 +35,16 @@ public class UserController {
 	
 	@GetMapping("/User/{id}")
 	@ResponseBody
-	User ShowUSerById(@PathVariable Long iduser) {
+	User ShowUserById(@PathVariable("id") Long iduser) {
 		return userservice.findById(iduser);
 	}
 	
 	// http://localhost:8089/SpringMVC/Users/Register
 	@PostMapping("/Register")
 	@ResponseBody
-	User AddUSer(@RequestBody User user) {
-		return userservice.Add_User(user);
+	User AddUSer(@Valid @RequestBody User user) throws EmailExistsException {
+		
+		return userservice.Register_User(user);
 	}
 	
 	@PutMapping("/UpdateUser")

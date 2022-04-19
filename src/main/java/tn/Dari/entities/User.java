@@ -1,7 +1,7 @@
 package tn.Dari.entities;
 
 import java.io.Serializable;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,18 +9,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
-
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import tn.Dari.validation.ValidPassword;
 
 
 @Entity
@@ -40,23 +41,28 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long user_id;
-	@Column(nullable=false)
+	@NotEmpty(message = "Name may not be null")
+	@Size(min=3)
+    @Column(nullable=false)
 	private String first_name;
 	@Column(nullable=false)
+	@NotEmpty(message = "Last name may not be null")
+	@Size(min=3)
 	private String last_name;
 	@Column(nullable=false,unique=true)
+	@NotEmpty
+	@Email(regexp = ".+@.+\\..+" ,message="Please provide a valid email address")
 	private String email;
 	@Column(nullable=false,unique=true)
-	private String phone_number;
-	@Column(nullable=false) // à ajouter le longeur de mdp et les critéres de mdp !!
-	private String password;
+	@NotEmpty
+    private String phone_number;
 	
-	 @ManyToMany 
-	    @JoinTable( 
-	        name = "users_roles", 
-	        joinColumns = @JoinColumn(name = "user_id"), 
-	        inverseJoinColumns = @JoinColumn(name = "role_id"))
-	    private List<Role> roles;
+	@ValidPassword
+    private String password;
+
+	private boolean locked;
+	private boolean enabled;
+	RoleName role;
 	
 	
 	
