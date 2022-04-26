@@ -30,7 +30,7 @@ public class AnnoucementController {
 	List<Announcement> afficherAnnouncement(){
 		return announcementservice.retrieveAnnouncement();
 	}
-	
+
 	
 	@GetMapping("/afficherAnnouncement/{id}")
 	@ResponseBody 
