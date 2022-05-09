@@ -14,9 +14,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import tn.Dari.entities.Announcement;
-import tn.Dari.entities.Image;
 import tn.Dari.repository.AnnouncementRepository;
-import tn.Dari.utility.ImageUtility;
 
 @Service
 public class AnnouncementService  implements IAnnouncementService  {
@@ -56,8 +54,8 @@ public class AnnouncementService  implements IAnnouncementService  {
 	}
 	
 
-	/*
 	
+	/*
 	@Override
 	public Announcement saveAnnouncement(Announcement An) {
 		return announcementRepository.save(An);
@@ -87,7 +85,88 @@ public class AnnouncementService  implements IAnnouncementService  {
 	//@Override
 	//public List<Announcement> retriveAnnouncementByDate(Date d1, Date d2) {
 		//return (List<Announcement>)announcementRepository.retriveAnnouncementByDate(d1, d2);}
+	
 
+	
+	@Override
+	public int getnblikes(Long idad)
+	{	int a;
+	Announcement ad=announcementRepository.findById(idad).get();
+		return a=ad.getLikesNB();
+		}
+	@Override
+	public int getnbdislikes(Long idad)
+	{	int a;
+	Announcement ad=announcementRepository.findById(idad).get();
+		return a=ad.getDislikeNB();
+		}
+	
+	
+	@Override
+	public int mostlikedadd() {	
+		int k=0;
+		List<Announcement> list= (List<Announcement>) announcementRepository.findAll();
+		for(Announcement ad: list ) {
 
+			if(ad.getLikesNB() > k) {
+				k=ad.getLikesNB();	  
+			}  
+		}
+
+		return k;
+
+	}
+
+	@Override
+	public Announcement Incrementlikes(Long idad) {
+		int a;
+		Announcement ad=announcementRepository.findById(idad).get();
+			a=ad.getLikesNB();
+			a++;
+			ad.setLikesNB(a);
+			announcementRepository.save(ad);
+			return ad;
+	}
+
+	@Override
+	public Announcement Incrementdislikes(Long idad)
+	{	int a;
+	Announcement ad=announcementRepository.findById(idad).get();
+		a=ad.getDislikeNB();
+		a++;
+		ad.setDislikeNB(a);
+		announcementRepository.save(ad);
+		return ad;
+	}
+	
+	
+
+	@Override
+	public Announcement findbyid(Long idad) {
+		return announcementRepository.findById(idad).get();
+
+	}
+	
+	@Override 
+	public int nbrlike() {
+		int nb=0;
+		List<Announcement> list= (List<Announcement>) announcementRepository.findAll();
+		for (Announcement ad: list){
+			nb+=ad.getLikesNB();
+		}
+		return nb;
+	}
+	
+	@Override 
+	public int nbrdislike() {
+		int nb=0;
+		List<Announcement> list= (List<Announcement>) announcementRepository.findAll();
+		for (Announcement ad: list){
+			nb+=ad.getDislikeNB();
+		}
+		return nb;
+	}
+	
+	
 
 }

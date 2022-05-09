@@ -52,12 +52,19 @@ public class Announcement implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	Long  id_an;
+	String object;
 	String description;
 	String address;
+	String articleAn;
+
 	double phone;
 	String city;
 	String governorate;
 	double price;
+	
+	private int LikesNB;
+	private int DislikeNB;
+    
 	@Temporal(TemporalType.DATE)
 	Date date = new Date(System.currentTimeMillis());
 	@Lob
@@ -65,8 +72,12 @@ public class Announcement implements Serializable {
 	String img;
 	@Enumerated(EnumType.STRING)
 	Type type;
-	@OneToMany(mappedBy = "announcements")
-	public Set<Visit> visits;
+	
+	
+	@OneToOne
+	private User user;
+	
+	
 	
 
 }

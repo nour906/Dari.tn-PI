@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
 import org.springframework.ui.Model;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,6 @@ import java.nio.file.Paths;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tn.Dari.entities.Announcement;
-import tn.Dari.entities.Image;
 import tn.Dari.repository.AnnouncementRepository;
 import tn.Dari.services.IAnnouncementService;
 
@@ -72,6 +72,7 @@ public class AnnoucementController {
 	Announcement afficherannouncement(@PathVariable("id")Long id_an) {
 		return announcementservice.retrieveById(id_an);
 	}
+	
 	
 	
 	@RequestMapping(value = "/Announcements", method = RequestMethod.POST)
@@ -116,6 +117,52 @@ public class AnnoucementController {
 		announcementservice.deleteAnnouncement(id);
 	}
 	
+	
+	////////////////////////:like
+	
+
+	@PutMapping("/incLikesad/{id}")
+	@ResponseBody
+	public Announcement IncrLikes(@PathVariable("id") Long adId) {
+		return announcementservice.Incrementlikes(adId);
+	}
+	
+	
+	@PutMapping("/incDislikesad/{id}")
+	@ResponseBody
+	public Announcement IncrDislikes(@PathVariable("id") Long adId) {
+		return announcementservice.Incrementdislikes(adId);
+	}
+	
+	@GetMapping("/getlike/{id}")
+	@ResponseBody
+	  public int getlikesad(@PathVariable("id") Long adId) {
+	    return announcementservice.getnblikes(adId);
+	  }
+	
+	@GetMapping("/getdislike/{id}")
+	@ResponseBody
+	  public int getdislikesad(@PathVariable("id") Long adId) {
+	    return announcementservice.getnbdislikes(adId);
+	  }
+	
+	@GetMapping("/getmostliked")
+	@ResponseBody
+	  public int getmostliked() {
+	    return announcementservice.mostlikedadd();
+	  }
+	
+	@GetMapping("/getallliked")
+	@ResponseBody
+	  public int nbrlike() {
+	    return announcementservice.nbrlike();
+	  }
+	
+	@GetMapping("/getalldisliked")
+	@ResponseBody
+	  public int nbrdislike() {
+	    return announcementservice.nbrdislike();
+	  }
 
 	
 }
