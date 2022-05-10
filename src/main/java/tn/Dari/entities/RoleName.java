@@ -1,6 +1,8 @@
 package tn.Dari.entities;
 
-public enum RoleName {
-	admin,customer,owner
 
+
+public enum RoleName  {
+	Admin,
+	customer
 }
