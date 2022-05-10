@@ -2,7 +2,9 @@ package tn.Dari.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -12,15 +14,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import tn.Dari.entities.Visit;
 
 
 @Entity
@@ -39,7 +43,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
+	private long user_id;
 	@Column(nullable=false)
 	private String first_name;
 	@Column(nullable=false)
@@ -58,6 +62,9 @@ public class User implements Serializable{
 	        inverseJoinColumns = @JoinColumn(name = "role_id"))
 	    private List<Role> roles;
 	
+		@OneToMany(mappedBy = "user")
+		@JsonIgnore
+		private Set<Visit> visits;
 	
 	
 	

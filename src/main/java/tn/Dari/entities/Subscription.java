@@ -22,7 +22,7 @@ import lombok.ToString;
 public class Subscription implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id_su; 
+	long id_su; 
 	String typeContract_su;
 	float price_su;
 	String model_su;

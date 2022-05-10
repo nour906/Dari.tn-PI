@@ -1,6 +1,9 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 17
+Built-By: 21624
+Build-Jdk: 17.0.2
 Implementation-Title: Dari.tn
 Implementation-Version: 1.0
+Implementation-Vendor-Id: tn.Dari
+Implementation-URL: https://spring.io/projects/spring-boot/Dari.tn
 Created-By: Maven Integration for Eclipse
 
