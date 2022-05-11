@@ -6,7 +6,6 @@ tn\Dari\repository\AnnouncementRepository.class
 tn\Dari\utility\ImageUtility.class
 tn\Dari\Application.class
 tn\Dari\services\VisiteService.class
-tn\Dari\configuration\CustomSecurityConfig.class
 tn\Dari\controller\VisiteController.class
 tn\Dari\entities\VisitType.class
 tn\Dari\repository\VisiteRepository.class

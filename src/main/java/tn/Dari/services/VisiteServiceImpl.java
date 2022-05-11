@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,7 @@ import tn.Dari.repository.AnnouncementRepository;
 import tn.Dari.repository.VisiteRepository;
 
 
-
+@Transactional
 @Service
 public class VisiteServiceImpl implements VisiteService{
 	
