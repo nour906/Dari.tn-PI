@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import tn.Dari.entities.Announcement;
 
 import tn.Dari.repository.AnnouncementRepository;
-
+import tn.Dari.utility.ImageUtility;
 
 @Service
 public class AnnouncementService  implements IAnnouncementService  {
@@ -29,7 +29,6 @@ public class AnnouncementService  implements IAnnouncementService  {
 	@Override
 	public List<Announcement> retrieveAnnouncement() {
 		return (List<Announcement>) announcementRepository.findAll();
-		
 	}
 
 	@Override

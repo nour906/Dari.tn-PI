@@ -10,15 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import tn.Dari.entities.User;
-import tn.Dari.entities.Visit;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -50,27 +48,22 @@ public class Announcement implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	private long  id_an;
+	Long  id_an;
 	String description;
 	String address;
+	String lng;
+	String lat;
 	double phone;
 	String city;
 	String governorate;
 	double price;
-	
 	Date date = new Date(System.currentTimeMillis());
-	@Lob
-	//@Column(columnDefinition = "photo")
-	String img;
-	@Enumerated(EnumType.STRING)
-	Type type;
+	//@Lob
+//	@Column(columnDefinition = "photo")
+	//String img;
+	//@Enumerated(EnumType.STRING)
+	//Type type;
 	
-	@OneToMany(mappedBy="announcement")
-	@JsonIgnore
-	private Set<Visit> visits;
-	@OneToOne
-	private User user;
-	
-	
-
+	@OneToMany(mappedBy = "announcement" ,cascade = CascadeType.ALL)
+	public Set<Visit> visits;
 }

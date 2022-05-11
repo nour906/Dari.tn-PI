@@ -5,4 +5,3 @@ public enum VisitType {
 	Direct, Virtual
 
 }
-
