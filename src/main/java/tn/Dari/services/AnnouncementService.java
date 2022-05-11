@@ -34,7 +34,7 @@ public class AnnouncementService  implements IAnnouncementService  {
 		return (Announcement) announcementRepository.findById(id).orElse(null);
 	}
 
-	
+	/*
 	@Override
 	public Announcement saveAnnouncement(Announcement An, MultipartFile file) {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -53,14 +53,14 @@ public class AnnouncementService  implements IAnnouncementService  {
 		return announcementRepository.save(An);
 	}
 	
-
+*/
 	
-	/*
+
 	@Override
 	public Announcement saveAnnouncement(Announcement An) {
 		return announcementRepository.save(An);
 		}
-	*/
+	
 	
 	
 	//@Override

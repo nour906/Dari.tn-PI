@@ -44,7 +44,6 @@ public class CommentController {
 		return commentService.findbyidCom(comId); 
 	}
 	
-	//localhost:3000/SpringMVC/servlet/comment/addcom
 	@PostMapping("/addcom/{adid}") 
 	public String addingcom(@RequestBody Comment c,@PathVariable("adid") Long adId) {
 		commentService.addCom(c,adId);

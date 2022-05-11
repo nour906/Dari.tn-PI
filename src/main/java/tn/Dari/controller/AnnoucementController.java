@@ -74,22 +74,22 @@ public class AnnoucementController {
 	}
 	
 	
-	
+	/*
 	@RequestMapping(value = "/Announcements", method = RequestMethod.POST)
 	@ResponseBody
 	
 	Announcement ajouterAnnouncement(Announcement An,@RequestParam("file") MultipartFile file){
 		return announcementservice.saveAnnouncement(An, file);
 	}
-	
+	*/
 	///////////////////////////////////////
-/*
+
 	@PostMapping("/Announcements")
 	@ResponseBody
 	Announcement ajouterAnnouncement(@RequestBody Announcement An){
 		return (Announcement) announcementservice.saveAnnouncement(An);
 	}
-	*/
+	
 	
 
 	

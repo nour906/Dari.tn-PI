@@ -62,6 +62,8 @@ public class Announcement implements Serializable {
 	String governorate;
 	double price;
 	
+	String lng;
+	String lat;
 	private int LikesNB;
 	private int DislikeNB;
     
@@ -73,11 +75,7 @@ public class Announcement implements Serializable {
 	@Enumerated(EnumType.STRING)
 	Type type;
 	
-	
-	@OneToOne
-	private User user;
-	
-	
+
 	
 
 }

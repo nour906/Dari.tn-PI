@@ -16,8 +16,8 @@ public interface IAnnouncementService {
 	List<Announcement> retrieveAnnouncement();	
 	Announcement retrieveById(Long id);
 	
-Announcement saveAnnouncement(Announcement An,MultipartFile file);
-//	Announcement saveAnnouncement(Announcement An);
+//Announcement saveAnnouncement(Announcement An,MultipartFile file);
+	Announcement saveAnnouncement(Announcement An);
 
 	//Announcement updateAnnouncement(Announcement An);
 	void deleteAnnouncement(Long id);
